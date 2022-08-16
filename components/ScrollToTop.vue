@@ -25,7 +25,7 @@ onBeforeUnmount(() => {
   <!-- Scroll to Top -->
   <Transition name="fade">
     <div
-      class="opacity-0 fixed right-0 bottom-0 w-28 h-28 p-8 transition ease-out duration-300"
+      class="opacity-0 fixed z-50 right-0 bottom-0 w-28 h-28 p-8 transition ease-out duration-300"
       :class="{ 'opacity-100': showScrollToTop }"
     >
       <button
