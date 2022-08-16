@@ -3,9 +3,11 @@ import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 
+const mainWrapper = ref();
 const swiperInstance = ref();
 const swiperIndex = ref<number>(0);
 const swiperPerPage = ref<number>(3);
+const showScrollToTop = ref<boolean>(false);
 
 const cafeImages = ref([
   "https://images.unsplash.com/photo-1508424757105-b6d5ad9329d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
@@ -105,12 +107,14 @@ const testimonies = ref([
   {
     id: 0,
     sender: "Bram Adl",
-    message: "Gokil, kafenya enak banget. Bisa reservasi jadi saya sama tim kerja di sini dari pagi dan gak nentu mau berakhir kapan. Pokok tempatnya keren banget",
+    message:
+      "Gokil, kafenya enak banget. Bisa reservasi jadi saya sama tim kerja di sini dari pagi dan gak nentu mau berakhir kapan. Pokok tempatnya keren banget",
   },
   {
     id: 1,
     sender: "Iqbal Maulana",
-    message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quidem vero, impedit veritatis quas molestias optio consequuntur, quia alias distinctio, minus sapiente quaerat quam!",
+    message:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quidem vero, impedit veritatis quas molestias optio consequuntur, quia alias distinctio, minus sapiente quaerat quam!",
   },
   {
     id: 2,
@@ -120,9 +124,17 @@ const testimonies = ref([
   {
     id: 3,
     sender: "Galih Pratama",
-    message: "Saya suka banget kalo ngedesign di sini, soalnya wi-fi nya kenceng dan tempatnya kondusif sih.",
+    message:
+      "Saya suka banget kalo ngedesign di sini, soalnya wi-fi nya kenceng dan tempatnya kondusif sih.",
   },
 ]);
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 
 const onSwiper = (swiper: any) => {
   swiperInstance.value = swiper;
@@ -133,20 +145,40 @@ const onSlideChange = () => {
     swiperIndex.value = swiperInstance.value.realIndex;
   }
 };
+
+const onDocumentScrolled = (e: Event) => {
+  if (mainWrapper.value) {
+    showScrollToTop.value = window.scrollY > window.innerHeight;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("scroll", onDocumentScrolled);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("scroll", onDocumentScrolled);
+});
 </script>
 
 <template>
-  <main class="relative">
+  <main ref="mainWrapper" class="relative">
     <!-- Scroll to Top -->
-    <div class="fixed right-0 bottom-0 w-28 h-28 p-8">
-      <button
-        class="w-full h-full flex items-center justify-center border border-gold"
+    <Transition name="fade">
+      <div
+        class="opacity-0 fixed right-0 bottom-0 w-28 h-28 p-8 transition ease-out duration-300"
+        :class="{ 'opacity-100': showScrollToTop }"
       >
-        <i class="bx bx-chevron-up text-3xl text-gold"></i>
-      </button>
-    </div>
+        <button
+          class="w-full h-full flex items-center justify-center border border-gold"
+          @click="scrollToTop"
+        >
+          <i class="bx bx-chevron-up text-3xl text-gold"></i>
+        </button>
+      </div>
+    </Transition>
     <!-- ./Scroll to Top -->
-    
+
     <!-- Hero Section -->
     <section
       id="hero-section"
@@ -221,10 +253,7 @@ const onSlideChange = () => {
               <span class="font-bold pl-16">Malang City</span>
             </div>
           </header>
-          <article
-            class="relative flex-1 overflow-hidden"
-            @mousemove="onMouseMove"
-          >
+          <article class="relative flex-1 overflow-hidden">
             <div
               class="z-[2] absolute left-0 top-0 -translate-y-1/2 w-full h-20 bg-[#0a0a0a] rounded-[100%]"
             ></div>
@@ -475,10 +504,13 @@ const onSlideChange = () => {
         >
           <div class="relative w-full h-auto">
             <div class="flex items-center justify-center mb-12">
-              <img src="https://laurent.qodeinteractive.com/wp-content/plugins/laurent-core/post-types/testimonials/shortcodes/testimonials/assets/img/quote-mark.png" alt="">
+              <img
+                src="https://laurent.qodeinteractive.com/wp-content/plugins/laurent-core/post-types/testimonials/shortcodes/testimonials/assets/img/quote-mark.png"
+                alt=""
+              />
             </div>
             <div class="relative z-20">
-              <client-only>
+              <ClientOnly>
                 <Swiper
                   class="h-full select-none"
                   :modules="[Autoplay]"
@@ -494,17 +526,23 @@ const onSlideChange = () => {
                     v-for="testimony in testimonies"
                     :key="testimony.id"
                   >
-                    <div class="w-1/2 mx-auto flex flex-col items-center justify-center gap-12">
-                      <p class="font-light font-merriweather tracking-widest leading-[1.75] text-lg text-center italic">
+                    <div
+                      class="w-1/2 mx-auto flex flex-col items-center justify-center gap-12"
+                    >
+                      <p
+                        class="font-light font-merriweather tracking-widest leading-[1.75] text-lg text-center italic"
+                      >
                         {{ testimony.message }}
                       </p>
-                      <p class="text-2xl font-merriweather text-gold font-bold uppercase tracking-widest">
+                      <p
+                        class="text-2xl font-merriweather text-gold font-bold uppercase tracking-widest"
+                      >
                         {{ testimony.sender }}
                       </p>
                     </div>
                   </SwiperSlide>
                 </Swiper>
-              </client-only>
+              </ClientOnly>
             </div>
           </div>
         </div>
@@ -579,54 +617,98 @@ const onSlideChange = () => {
     <!-- Footer -->
     <footer id="footer" class="w-full h-auto">
       <SectionContainer>
-        <div
-          class="w-full h-auto flex flex-col items-center justify-center py-16"
-        >
-          <NuxtLink class="w-28 h-28" to="/">
-            <img class="logo" src="~/assets/img/logo.png" alt="Logo" />
-          </NuxtLink>
-          <p
-            class="font-thin tracking-wider leading-[1.75] text-sm text-center"
-          >
-            Handall Coffee, Coffee Shop (0813-4455-7778)
-          </p>
-          <address
-            class="not-italic font-thin tracking-wider leading-[1.75] text-sm text-center"
-          >
-            Jl. Semanggi Timur No.7, Jatimulyo, Kec. Lowokwaru, Kota Malang,
-            Jawa Timur 65141
-          </address>
-          <p
-            class="font-thin tracking-wider leading-[1.75] text-sm text-center"
-          >
-            Open Monday - Sunday at 06.00 - 22.00
-          </p>
-          <p
-            class="font-thin tracking-wider leading-[1.75] text-sm text-center"
-          >
-            &copy; 2022 Handall Coffee - All rights reserved. Website made by
-            <a href="https://fluxt.co" class="font-normal">Fluxt</a>
-          </p>
+        <div class="w-full h-auto flex flex-col items-start mb-6">
+          <div class="w-full grid grid-cols-2">
+            <div class="flex flex-col gap-6 px-12">
+              <NuxtLink class="inline-block mb-4" to="/">
+                <img
+                  class="w-16 h-16 border border-gold"
+                  src="~/assets/img/logo.png"
+                  alt="Logo"
+                />
+              </NuxtLink>
 
-          <div class="flex items-center gap-24 mt-16">
-            <a
-              class="nav-link active relative text-sm font-thin uppercase tracking-wider"
-              href="#"
-            >
-              Instagram
-            </a>
-            <a
-              class="nav-link active relative text-sm font-thin uppercase tracking-wider"
-              href="#"
-            >
-              Facebook
-            </a>
-            <a
-              class="nav-link active relative text-sm font-thin uppercase tracking-wider"
-              href="#"
-            >
-              Twitter
-            </a>
+              <div>
+                <p class="font-thin tracking-wider leading-[1.75] text-sm">
+                  Handall Coffee, Coffee Shop (0813-4455-7778)
+                </p>
+                <address
+                  class="not-italic font-thin tracking-wider leading-[1.75] text-sm"
+                >
+                  Jl. Semanggi Timur No.7, <br />
+                  Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141
+                </address>
+                <p class="font-thin tracking-wider leading-[1.75] text-sm">
+                  Open Monday - Sunday at 06.00 - 22.00
+                </p>
+              </div>
+
+              <div class="grid grid-cols-3 gap-6">
+                <div>
+                  <a
+                    class="nav-link active relative text-sm font-thin uppercase tracking-wider"
+                    href="#"
+                  >
+                    Instagram
+                  </a>
+                </div>
+                <div>
+                  <a
+                    class="nav-link active relative text-sm font-thin uppercase tracking-wider"
+                    href="#"
+                  >
+                    Facebook
+                  </a>
+                </div>
+                <div>
+                  <a
+                    class="nav-link active relative text-sm font-thin uppercase tracking-wider"
+                    href="#"
+                  >
+                    Twitter
+                  </a>
+                </div>
+                <div>
+                  <a
+                    class="nav-link active relative text-sm font-thin uppercase tracking-wider"
+                    href="#"
+                  >
+                    Go-food
+                  </a>
+                </div>
+                <div>
+                  <a
+                    class="nav-link active relative text-sm font-thin uppercase tracking-wider"
+                    href="#"
+                  >
+                    Grab-food
+                  </a>
+                </div>
+                <div>
+                  <a
+                    class="nav-link active relative text-sm font-thin uppercase tracking-wider"
+                    href="#"
+                  >
+                    Shopee-food
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="px-12">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.5028776149866!2d112.61610131477914!3d-7.946870994276003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e788275dfc0467f%3A0xa6f5f0141e127b0b!2sJl.%20Semanggi%20Timur%20No.7%2C%20Jatimulyo%2C%20Kec.%20Lowokwaru%2C%20Kota%20Malang%2C%20Jawa%20Timur%2065141!5e0!3m2!1sen!2sid!4v1660632623485!5m2!1sen!2sid"
+                class="w-full h-full"
+                style="border: 0"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+          <div class="w-full mt-12 flex items-center justify-center">
+            <p class="font-thin tracking-wider leading-[1.75] text-xs">
+              &copy; 2022 Handall Coffee - All rights reserved. Website made by
+              <a href="https://fluxt.co" class="font-normal">Fluxt</a>
+            </p>
           </div>
         </div>
       </SectionContainer>
@@ -634,5 +716,3 @@ const onSlideChange = () => {
     <!-- ./Footer -->
   </main>
 </template>
-
-<style scoped></style>
