@@ -3,9 +3,9 @@
 <template>
   <footer id="footer">
     <SectionContainer>
-      <div class="w-full h-auto flex flex-col items-start gap-16 p-16">
-        <div class="w-full grid grid-cols-2">
-          <div class="flex flex-col gap-6">
+      <div class="w-full h-auto flex flex-col items-start gap-8 lg:gap-16 px-4 py-8 lg:p-16">
+        <div class="w-full grid md:grid-cols-2 gap-8 lg:gap-0">
+          <div class="flex flex-col lg:gap-6">
             <NuxtLink class="inline-block mb-4" to="/">
               <img
                 class="w-16 h-16 border border-gold"
@@ -23,7 +23,7 @@
               <p>Open Monday - Sunday at 06.00 - 22.00</p>
             </div>
 
-            <div class="grid grid-cols-3 gap-6">
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
               <div>
                 <a
                   class="nav-link active relative text-sm font-thin uppercase tracking-wider"
@@ -85,7 +85,7 @@
           </div>
         </div>
         <div class="w-full flex items-center justify-center">
-          <p class="font-thin tracking-wider leading-[1.75] text-xs">
+          <p class="text-center text-xs">
             &copy; 2022 Handall Coffee - All rights reserved. Website made by
             <a href="https://fluxt.co" class="font-normal">Fluxt</a>
           </p>

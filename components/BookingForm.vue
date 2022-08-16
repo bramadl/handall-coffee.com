@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="grid grid-cols-4 gap-4">
+  <div class="grid lg:grid-cols-4 gap-4">
     <button
       class="text-left py-4 px-6 border border-gold hover:bg-gold hover:text-white transition ease-out duration-300"
     >

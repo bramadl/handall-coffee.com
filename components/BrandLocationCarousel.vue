@@ -6,6 +6,16 @@ import "swiper/css";
 const swiperInstance = ref();
 const swiperIndex = ref<number>(0);
 
+const spaceBetween = computed(() => {
+  return window.innerWidth < 768 ? 24 : 48;
+});
+
+const sliderPerView = computed(() => {
+  return window.innerWidth < 768 ? 2 : 3;
+});
+
+const shaderClass = "z-[2] absolute left-0 w-full h-10 lg:h-20 bg-[#0a0a0a] rounded-[100%]";
+
 const onSwiper = (swiper: any) => {
   swiperInstance.value = swiper;
 };
@@ -33,43 +43,39 @@ const cafeImages = ref([
 </script>
 
 <template>
-  <article class="relative flex-1 overflow-hidden">
-    <div
-      class="z-[2] absolute left-0 top-0 -translate-y-1/2 w-full h-20 bg-[#0a0a0a] rounded-[100%]"
-    ></div>
+  <article class="flex-1 flex flex-col gap-8">
+    <div class="relative overflow-hidden">
+      <div class="top-0 -translate-y-1/2" :class="shaderClass" />
+  
+      <client-only>
+        <Swiper
+          :autoplay="{
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }"
+          class="relative z-20 h-full select-none cursor-pointer"
+          loop
+          :modules="[Autoplay]"
+          :space-between="spaceBetween"
+          :slides-per-view="sliderPerView"
+          @swiper="onSwiper"
+          @slideChange="onSlideChange"
+        >
+          <SwiperSlide v-for="image in cafeImages" :key="image">
+            <img
+              class="w-full aspect-[4/6] object-cover select-none"
+              :src="image"
+            />
+          </SwiperSlide>
+        </Swiper>
+      </client-only>
+  
+      <div class="bottom-0 translate-y-1/2" :class="shaderClass" />
+    </div>
 
-    <client-only>
-      <Swiper
-        :autoplay="{
-          delay: 5000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }"
-        class="relative z-20 h-full select-none cursor-pointer"
-        loop
-        :modules="[Autoplay]"
-        :slides-per-view="3"
-        :space-between="48"
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
-      >
-        <SwiperSlide v-for="image in cafeImages" :key="image">
-          <img
-            class="w-full aspect-[4/6] object-cover select-none"
-            :src="image"
-          />
-        </SwiperSlide>
-      </Swiper>
-    </client-only>
-
-    <div
-      class="z-[2] absolute left-0 bottom-0 translate-y-1/2 w-full h-20 bg-[#0a0a0a] rounded-[100%]"
-    ></div>
-
-    <div
-      class="z-10 absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-0.5 text-white"
-    >
-      <div class="relative w-[400px] h-full mx-auto rounded-full bg-white/5">
+    <div class="w-full h-0.5 text-white">
+      <div class="relative w-[200px] lg:w-[400px] h-full mx-auto rounded-full bg-white/5">
         <div
           class="absolute bg-gold h-full rounded-full transition-all ease-out duration-300"
           :style="{

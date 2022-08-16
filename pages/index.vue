@@ -9,7 +9,7 @@
       class="relative w-full h-screen flex flex-col justify-between"
     >
       <NavigationMenu />
-      <SectionContainer class="flex-1">
+      <SectionContainer class="flex-1 overflow-hidden lg:overflow-auto">
         <HeroBanner />
         <HeroFigure />
       </SectionContainer>
@@ -57,8 +57,8 @@
 
     <section id="booking-section">
       <SectionContainer>
-        <div class="w-full px-16">
-          <div class="relative z-10 flex flex-col gap-16 p-16 bg-neutral-900">
+        <div class="w-full lg:px-16">
+          <div class="relative z-10 flex flex-col gap-16 px-4 py-8 lg:p-16 bg-neutral-900">
             <SectionHeader
               title="Make Reservation"
               message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, perspiciatis! Ducimus blanditiis, maiores id ratione hic reiciendis aliquam eum sequi? Tempore iste provident quasi!"

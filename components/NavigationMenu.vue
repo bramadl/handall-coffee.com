@@ -9,13 +9,13 @@ const navMenus = ref([
 </script>
 
 <template>
-  <nav class="w-full h-28 flex items-center justify-between border-b border-gold">
+  <nav class="w-full h-20 lg:h-28 flex items-center justify-between border-b border-gold">
     <div class="aspect-square h-full p-4">
       <NuxtLink to="/">
         <img class="logo" src="~/assets/img/logo.png" alt="Logo" />
       </NuxtLink>
     </div>
-    <ul class="h-full flex-1 hidden lg:flex items-center justify-center gap-16 border-x border-gold">
+    <ul class="h-full flex-1 hidden md:flex items-center justify-center gap-8 lg:gap-16 border-x border-gold">
       <li v-for="menu in navMenus" :key="menu.path">
         <NuxtLink
           class="nav-link relative text-sm font-thin uppercase tracking-wider"

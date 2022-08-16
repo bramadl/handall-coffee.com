@@ -80,16 +80,20 @@ const cafeMenu = reactive({
 </script>
 
 <template>
-  <div class="grid grid-cols-2">
-    <ul class="flex flex-col gap-8 px-12">
+  <div class="grid lg:grid-cols-2 gap-8 lg:gap-0">
+    <ul class="flex flex-col gap-8 px-4 lg:px-16">
       <li
         v-for="food in cafeMenu.foods"
         :key="food.id"
-        class="flex items-center gap-4"
+        class="flex flex-col lg:flex-row items-center gap-4"
       >
-        <img :src="food.thumbnail" class="w-16 aspect-square" alt="" />
+        <img
+          :alt="food.name"
+          :src="food.thumbnail"
+          class="w-full lg:w-16 aspect-video lg:aspect-square object-cover"
+        />
         <article class="flex-1">
-          <div class="flex items-center justify-between">
+          <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between">
             <h3 class="font-merriweather text-lg uppercase font-thin text-gold">
               {{ food.name }}
             </h3>
@@ -101,15 +105,19 @@ const cafeMenu = reactive({
         </article>
       </li>
     </ul>
-    <ul class="flex flex-col gap-8 px-12">
+    <ul class="flex flex-col gap-8 px-4 lg:px-16">
       <li
         v-for="food in cafeMenu.drinks"
         :key="food.id"
-        class="flex items-center gap-4"
+        class="flex flex-col lg:flex-row items-center gap-4"
       >
-        <img :src="food.thumbnail" class="w-16 aspect-square" alt="" />
+        <img
+          :alt="food.name"
+          :src="food.thumbnail"
+          class="w-full lg:w-16 aspect-video lg:aspect-square object-cover"
+        />
         <article class="flex-1">
-          <div class="flex items-center justify-between">
+          <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between">
             <h3 class="font-merriweather text-lg uppercase font-thin text-gold">
               {{ food.name }}
             </h3>
@@ -122,6 +130,7 @@ const cafeMenu = reactive({
       </li>
     </ul>
   </div>
+
   <div class="relative z-10 flex items-center justify-center">
     <BaseButton>
       View All Menu

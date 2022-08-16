@@ -12,17 +12,17 @@ defineProps({
 </script>
 
 <template>
-  <header class="flex flex-col gap-4">
-    <div class="flex items-center justify-center gap-8">
+  <header class="flex flex-col gap-4 px-4">
+    <div class="flex items-center justify-center gap-4 lg:gap-8">
       <BrandPatternOrnament />
       <h2
-        class="text-4xl font-merriweather text-gold font-bold uppercase tracking-widest"
+        class="text-2xl lg:text-4xl text-center font-merriweather text-gold font-bold uppercase tracking-wide lg:tracking-widest"
       >
         {{ title }}
       </h2>
       <BrandPatternOrnament />
     </div>
-    <div class="w-2/4 mx-auto">
+    <div class="lg:w-2/4 mx-auto">
       <p class="text-center">{{ message }}</p>
     </div>
   </header>

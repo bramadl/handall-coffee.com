@@ -14,6 +14,6 @@
   }
 
   p {
-    @apply font-thin tracking-wider leading-[1.75] text-sm;
+    @apply font-thin tracking-wider leading-[1.75] text-base lg:text-sm;
   }
 }

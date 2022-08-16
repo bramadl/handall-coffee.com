@@ -35,7 +35,7 @@ const facilities = ref<FacilityProps[]>([
 </script>
 
 <template>
-  <div class="w-full grid grid-cols-4 py-16">
+  <div class="w-full grid lg:grid-cols-4 gap-8 lg:gap-0 py-16">
     <article
       v-for="facility in facilities"
       :key="facility.id"

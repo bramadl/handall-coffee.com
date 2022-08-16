@@ -53,10 +53,9 @@ const testimonies = ref([
         >
           <SwiperSlide v-for="testimony in testimonies" :key="testimony.id">
             <div
-              class="w-1/2 mx-auto flex flex-col items-center justify-center gap-12"
+              class="lg:w-1/2 mx-auto flex flex-col items-center justify-between gap-12 px-4 lg:px-0"
             >
-              <p
-                class="font-light font-merriweather tracking-widest leading-[1.75] text-lg text-center italic"
+              <p class="font-light font-merriweather tracking-widest lg:text-lg text-center italic"
               >
                 {{ testimony.message }}
               </p>
