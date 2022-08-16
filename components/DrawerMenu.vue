@@ -69,25 +69,19 @@ const closeDrawer = () => {
           </button>
         
           <div
-            class="w-full h-full flex flex-col items-center justify-between p-16"
+            class="w-full h-full flex flex-col items-center justify-between gap-16 p-16"
           >
             <NuxtLink class="inline-block w-32 h-32" to="/">
               <img class="logo" src="~/assets/img/logo.png" alt="Logo" />
             </NuxtLink>
 
-            <div class="text-center">
-              <p class="font-thin tracking-wider leading-[1.75] text-sm">
-                Handall Coffee, Coffee Shop (0813-4455-7778)
-              </p>
-              <address
-                class="not-italic font-thin tracking-wider leading-[1.75] text-sm"
-              >
-                Jl. Semanggi Timur No.7, <br />
-                Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141
+            <div class="flex-1 text-center">
+              <p>Handall Coffee, Coffee Shop</p>
+              <p>0813-4455-7778</p>
+              <address class="not-italic">
+                <p> Jl. Semanggi Timur No.7, Jatimulyo, <br> Kec. Lowokwaru, Kota Malang, Jawa Timur 65141</p>
               </address>
-              <p class="font-thin tracking-wider leading-[1.75] text-sm">
-                Open Monday - Sunday at 06.00 - 22.00
-              </p>
+              <p>Open Monday - Sunday at 06.00 - 22.00</p>
             </div>
 
             <div class="flex flex-col items-center gap-8">
