@@ -4,13 +4,11 @@
   <header
     class="relative z-20 w-1/2 h-full flex flex-col items-start justify-center p-12"
   >
-    <div>
-      <h1
-        class="font-merriweather text-[4rem] font-bold uppercase tracking-[12px] text-gold"
-      >
+    <div class="flex flex-col">
+      <h1 class="font-merriweather text-[4rem] font-bold uppercase tracking-[12px] leading-[1] text-gold">
         Handall
       </h1>
-      <p class="mt-3 font-light leading-[1.5]">
+      <p class="font-thin tracking-wider leading-[1.75] text-sm">
         The Pursuit Of Brewing Speciality Coffee That You'll Remember.
       </p>
     </div>
