@@ -6,6 +6,14 @@ const lineGroupClass =
 const lineClass =
   "w-6 h-auto border-b border-gold transition-transform duration-300 ease-out";
 
+const navMenus = ref([
+  { path: "/", text: "Home" },
+  { path: "/about", text: "About" },
+  { path: "/menus", text: "Menus" },
+  { path: "/blogs", text: "Blogs" },
+  { path: "/contact-us", text: "Contact Us" },
+]);
+
 const onKeyup = (e: KeyboardEvent) => {
   if (e.key === "Escape") closeDrawer();
 }
@@ -75,7 +83,7 @@ const closeDrawer = () => {
               <img class="logo" src="~/assets/img/logo.png" alt="Logo" />
             </NuxtLink>
 
-            <div class="flex-1 text-center">
+            <div class="hidden lg:block flex-1 text-center">
               <p>Handall Coffee, Coffee Shop</p>
               <p>0813-4455-7778</p>
               <address class="not-italic">
@@ -84,7 +92,19 @@ const closeDrawer = () => {
               <p>Open Monday - Sunday at 06.00 - 22.00</p>
             </div>
 
-            <div class="flex flex-col items-center gap-8">
+            <ul class="lg:hidden h-full flex-1 flex flex-col items-center justify-center gap-8 lg:gap-16">
+              <li v-for="menu in navMenus" :key="menu.path">
+                <NuxtLink
+                  class="nav-link relative text-lg font-thin uppercase tracking-wider"
+                  exact-active-class="active-link"
+                  :to="menu.path"
+                >
+                  {{ menu.text }}
+                </NuxtLink>
+              </li>
+            </ul>   
+
+            <div class="hidden lg:flex flex-col items-center gap-8">
               <div>
                 <a
                   class="nav-link active relative text-sm font-thin uppercase tracking-wider"
