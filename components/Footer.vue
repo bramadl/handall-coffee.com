@@ -1,11 +1,11 @@
 <script setup lang="ts"></script>
 
 <template>
-  <footer id="footer" class="w-full h-auto">
+  <footer id="footer">
     <SectionContainer>
-      <div class="w-full h-auto flex flex-col items-start mb-6">
+      <div class="w-full h-auto flex flex-col items-start gap-16 p-16">
         <div class="w-full grid grid-cols-2">
-          <div class="flex flex-col gap-6 px-12">
+          <div class="flex flex-col gap-6">
             <NuxtLink class="inline-block mb-4" to="/">
               <img
                 class="w-16 h-16 border border-gold"
@@ -80,7 +80,7 @@
               </div>
             </div>
           </div>
-          <div class="px-12">
+          <div>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.5028776149866!2d112.61610131477914!3d-7.946870994276003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e788275dfc0467f%3A0xa6f5f0141e127b0b!2sJl.%20Semanggi%20Timur%20No.7%2C%20Jatimulyo%2C%20Kec.%20Lowokwaru%2C%20Kota%20Malang%2C%20Jawa%20Timur%2065141!5e0!3m2!1sen!2sid!4v1660632623485!5m2!1sen!2sid"
               class="w-full h-full"
@@ -90,7 +90,7 @@
             ></iframe>
           </div>
         </div>
-        <div class="w-full mt-12 flex items-center justify-center">
+        <div class="w-full flex items-center justify-center">
           <p class="font-thin tracking-wider leading-[1.75] text-xs">
             &copy; 2022 Handall Coffee - All rights reserved. Website made by
             <a href="https://fluxt.co" class="font-normal">Fluxt</a>

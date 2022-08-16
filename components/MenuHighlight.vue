@@ -127,7 +127,7 @@ const cafeMenu = reactive({
     </ul>
   </div>
   <div class="relative z-10 flex items-center justify-center">
-    <button class="mt-12 py-4 px-6 border border-gold hover:bg-gold hover:text-white transition ease-out duration-300">
+    <button class="py-4 px-6 border border-gold hover:bg-gold hover:text-white transition ease-out duration-300">
       <span class="text-sm font-thin uppercase tracking-[2px]">
         View All Menu
       </span>
