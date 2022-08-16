@@ -32,7 +32,7 @@ const navMenus = ref([
   </nav>
 </template>
 
-<style scoped>
+<style>
 .nav-link::after,
 .nav-link::before,
 .active-link::after,
@@ -64,6 +64,8 @@ const navMenus = ref([
   width: 100%;
 }
 
+.nav-link.active::after,
+.nav-link.active::before,
 .active-link::after,
 .active-link::before {
   width: 100%;

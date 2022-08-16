@@ -8,6 +8,7 @@ module.exports = {
       },
       colors: {
         gold: "#d2ae67",
+        dark: "#0a0a0a",
       },
     },
   },
