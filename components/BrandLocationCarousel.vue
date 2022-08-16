@@ -37,6 +37,7 @@ const cafeImages = ref([
     <div
       class="z-[2] absolute left-0 top-0 -translate-y-1/2 w-full h-20 bg-[#0a0a0a] rounded-[100%]"
     ></div>
+
     <client-only>
       <Swiper
         :autoplay="{
@@ -60,6 +61,7 @@ const cafeImages = ref([
         </SwiperSlide>
       </Swiper>
     </client-only>
+
     <div
       class="z-[2] absolute left-0 bottom-0 translate-y-1/2 w-full h-20 bg-[#0a0a0a] rounded-[100%]"
     ></div>

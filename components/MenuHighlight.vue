@@ -97,9 +97,7 @@ const cafeMenu = reactive({
               {{ food.price }}
             </p>
           </div>
-          <p class="font-thin tracking-wider leading-[1.75] text-sm">
-            {{ food.description }}
-          </p>
+          <p>{{ food.description }}</p>
         </article>
       </li>
     </ul>
@@ -119,18 +117,14 @@ const cafeMenu = reactive({
               {{ food.price }}
             </p>
           </div>
-          <p class="font-thin tracking-wider leading-[1.75] text-sm">
-            {{ food.description }}
-          </p>
+          <p>{{ food.description }}</p>
         </article>
       </li>
     </ul>
   </div>
   <div class="relative z-10 flex items-center justify-center">
-    <button class="py-4 px-6 border border-gold hover:bg-gold hover:text-white transition ease-out duration-300">
-      <span class="text-sm font-thin uppercase tracking-[2px]">
-        View All Menu
-      </span>
-    </button>
+    <BaseButton>
+      View All Menu
+    </BaseButton>
   </div>
 </template>

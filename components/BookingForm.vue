@@ -10,9 +10,7 @@
     <button
       class="text-left py-4 px-6 border border-gold hover:bg-gold hover:text-white transition ease-out duration-300"
     >
-      <span class="text-sm font-thin uppercase tracking-[2px]">
-        08 / 08 / 2022
-      </span>
+      <span class="text-sm font-thin uppercase tracking-[2px]"> 08 / 08 / 2022 </span>
     </button>
     <button
       class="text-left py-4 px-6 border border-gold hover:bg-gold hover:text-white transition ease-out duration-300"

@@ -49,9 +49,7 @@ const facilities = ref<FacilityProps[]>([
       <h2 class="font-merriweather font-thin text-gold uppercase text-lg tracking-widest">
         {{ facility.name }}
       </h2>
-      <p class="font-thin tracking-wider leading-[1.75] text-sm">
-        {{ facility.description }}
-      </p>
+      <p>{{ facility.description }}</p>
     </article>
   </div>
 </template>

@@ -12,4 +12,8 @@
     background: #0a0a0a;
     overscroll-behavior: none;
   }
+
+  p {
+    @apply font-thin tracking-wider leading-[1.75] text-sm;
+  }
 }

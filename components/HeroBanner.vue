@@ -2,22 +2,16 @@
 
 <template>
   <header
-    class="relative z-20 w-1/2 h-full flex flex-col items-start justify-center p-12"
+    class="relative z-20 w-1/2 h-full flex flex-col items-start justify-center gap-16 p-16"
   >
     <div class="flex flex-col">
-      <h1 class="font-merriweather text-[4rem] font-bold uppercase tracking-[12px] leading-[1] text-gold">
+      <h1
+        class="font-merriweather text-[4rem] font-bold uppercase tracking-[12px] leading-[1] text-gold"
+      >
         Handall
       </h1>
-      <p class="font-thin tracking-wider leading-[1.75] text-sm">
-        The Pursuit Of Brewing Speciality Coffee That You'll Remember.
-      </p>
+      <p>The Pursuit Of Brewing Speciality Coffee That You'll Remember.</p>
     </div>
-    <button
-      class="mt-12 py-4 px-6 border border-gold hover:bg-gold hover:text-white transition ease-out duration-300"
-    >
-      <span class="text-sm font-thin uppercase tracking-[2px]">
-        Register Membership
-      </span>
-    </button>
+    <BaseButton> Register Membership </BaseButton>
   </header>
 </template>
