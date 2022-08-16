@@ -2,7 +2,7 @@
 
 <template>
   <header
-    class="relative z-20 flex flex-col items-center gap-1 text-4xl font-merriweather uppercase"
+    class="relative z-20 flex flex-col items-center gap-1 text-4xl font-merriweather uppercase mt-12 mb-8"
   >
     <div>
       <span class="text-gold pl-16 pr-4">Increasing</span>
